@@ -1,20 +1,22 @@
-package main
-
 import (
-	"log"
-	"net/http"
+    "log"
+    "net/http"
+    "os"
 )
 
 func main() {
-	http.HandleFunc("/api/fetch-formats", FetchFormatsHandler)
-	http.HandleFunc("/api/download", DownloadHandler)
+    http.HandleFunc("/api/fetch-formats", FetchFormatsHandler)
+    http.HandleFunc("/api/download", DownloadHandler)
 
-	// Health check
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Write([]byte("TeraBox Downloader API"))
-	})
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        w.Header().Set("Access-Control-Allow-Origin", "*")
+        w.Write([]byte("TeraBox Downloader API"))
+    })
 
-	log.Println("Server started at :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080"
+    }
+    log.Printf("Server started at :%s\n", port)
+    log.Fatal(http.ListenAndServe(":" + port, nil))
 }
