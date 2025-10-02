@@ -51,4 +51,4 @@ The frontend runs on [http://localhost:3000](http://localhost:3000)
 ## Note
 
 This starter uses mock backend logic for TeraBox (for demonstration only).  
-Production version requires real TeraBox link parsing and video streaming logic (to be implemented in `backend/terabox.go`).
+Production version requires real TeraBox link parsing and video streaming logic (to be implemented in `backend/terabox.go`).  
