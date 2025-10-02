@@ -13,7 +13,7 @@ const VideoDownloader = () => {
     setError("");
     setDownloadUrl("");
     try {
-      const res = await fetch("http://localhost:8080/api/fetch-formats", {
+      const res = await fetch("https://testcopilot.onrender.com/api/fetch-formats", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ link }),
@@ -32,7 +32,7 @@ const VideoDownloader = () => {
   };
 
   const handleDownload = () => {
-    const url = `http://localhost:8080/api/download?link=${encodeURIComponent(link)}&format=${encodeURIComponent(selectedFormat)}`;
+    const url = `https://testcopilot.onrender.com/api/download?link=${encodeURIComponent(link)}&format=${encodeURIComponent(selectedFormat)}`;
     window.open(url, "_blank");
   };
 
